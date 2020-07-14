@@ -3,7 +3,10 @@
 
 WordPress plugin that adds a shortcode `[subsite-cards]` which displays a multisite's *public* subsites as Bootstrap 4 cards, displaying:
 
-get_theme_mod *custom_logo*, bloginfo *blogname* and link, bloginfo *rss2_url* link (uses FontAwesome fa-rss icon), and bloginfo *description*).
+get_theme_mod **custom_logo**<br>
+bloginfo **blogname** and **url**<br>
+bloginfo **rss2_url** link<br>
+bloginfo **description**
 
 Optional attributes:
 
