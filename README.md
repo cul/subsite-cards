@@ -21,9 +21,7 @@ Optional attributes:
 <tbody>
 <tr>
 <td>image_fallback</td>
-<td style="
-    word-break: break-all;
-">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg=='</td>
+<td style="word-break: break-all;">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg=='</td>
 <td>image_fallback="<a href="https://some.url/img.png" rel="nofollow">https://some.url/img.png</a>"</td>
 </tr>
 <tr>
