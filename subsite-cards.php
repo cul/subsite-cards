@@ -18,7 +18,8 @@ function subsitecards($atts = []) {
         'image_fallback'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg==',
         'rss_icon_class' => 'fal fa-rss',
         'grid_class' => 'col-6 col-md-3',
-        'orderby' => 'path'
+        'orderby' => 'path',
+        'autostyle' => false,
     ), $atts
   );
   $rss_icon_class = esc_attr($flags['rss_icon_class']);
@@ -55,6 +56,7 @@ function subsitecards($atts = []) {
     }
     </style>
 EOS;
+  $autostyle = ($flags['autostyle'] == 'true') ? $style : '';
   $card = <<<EOC
     <div class="subsiteCard $grid_class">
       <div class="card bg-white border-0 h-100">
@@ -83,7 +85,7 @@ EOC;
               $output .=  sprintf(  $card, $image, $burl, $site->blogname, $description, $rurl  );
       restore_current_blog();
   }
-  return $style.'<div class="row h-100 my-4">'.$output.'</div>';
+  return $autostyle.'<div class="row h-100 my-4">'.$output.'</div>';
 }
 
 function subsiteCards_init()
