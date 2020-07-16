@@ -8,39 +8,25 @@ WordPress plugin that adds a shortcode `[subsite-cards]` which displays a multis
 **rss2_url** link (*bloginfo()*)<br>
 **description** (*bloginfo()*)
 
-Optional attributes:
+#### Optional attributes:
 
-<table>
-<thead>
-<tr>
-<th>attribute</th>
-<th>default value</th>
-<th>example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>image_fallback</td>
-<td style="word-break: break-all;">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg=='</td>
-<td>image_fallback="<a href="https://some.url/img.png" rel="nofollow">https://some.url/img.png</a>"</td>
-</tr>
-<tr>
-<td>exclude_sites</td>
-<td></td>
-<td>exclude_sites="1,5"</td>
-</tr>
-<tr>
-<td>rss_icon_class</td>
-<td>fal fa-rss</td>
-<td>rss_icon_class="fas fa-rss-square"</td>
-</tr>
-</tbody>
-</table>
+* `image_fallback`
+  * default: *'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg=='*
+  * example: *`image_fallback="https://some.url/img.png"`*
+* `exclude_sites`
+  * default:
+  * example: *`exclude_sites="1,5"`*
+* `rss_icon_class`
+  * default: *fal fa-rss*
+  * example: *`rss_icon_class="fas fa-rss-square"`*
+* `grid_class`
+  * default: *col-6 col-md-3*
+  * example: *`col-6 col-sm-4 col-lg-2`*
 
-Examples:
+#### Examples:
 
 `[subsite-cards]`
 
 `[subsite-cards exclude_sites="1"]`
 
-`[subsite-cards exclude_sites="1,4" image_fallback="https://some.url/img.png" rss_icon_class="fas fa-rss"]`
+`[subsite-cards exclude_sites="1,4" image_fallback="https://some.url/img.png" rss_icon_class="fas fa-rss" grid_class="col-6 col-md-4"]`
