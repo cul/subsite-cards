@@ -2,7 +2,7 @@
 /*
 Plugin Name: Subsite Cards
 Plugin URI: https://github.com/cul/subsite-cards
-Description: Wordpress shortcode [subsite-cards] displays a multisite's public subsites as bs4 cards (with theme's custom_logo, blogname, rss2 feed link, and description). optional shortcode args include: image_fallback="https://some.url/img.png", exclude_sites="1,5" (site ids to exclude), rss_icon_class, and grid_class.
+Description: Wordpress shortcode [subsite-cards] displays a multisite's public subsites as bs4 cards (with theme's custom_logo, blogname, rss2 feed link, and description). see the README (https://github.com/cul/subsite-cards/blob/master/README.md) for optional args.
 Version: 1.0.0
 Author: er2576
 Author URI: https://github.com/er-k/
@@ -18,16 +18,19 @@ function subsitecards($atts = []) {
         'image_fallback'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg==',
         'rss_icon_class' => 'fal fa-rss',
         'grid_class' => 'col-6 col-md-3',
+        'orderby' => 'path'
     ), $atts
   );
   $rss_icon_class = esc_attr($flags['rss_icon_class']);
   $grid_class = esc_attr($flags['grid_class']);
+  $orderby = (in_array($flags['orderby'],['path','last_updated'])) ? $flags['orderby'] : 'path';
   $args = array(
       'public'        => 1,
       'spam'          => 0,
       'deleted'       => 0,
       'archived'      => 0,
       'site__not_in'  => $flags['exclude_sites'],
+      'orderby'       => $orderby,
   );
   $sites = get_sites($args);
   $output = '';
