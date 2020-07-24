@@ -14,13 +14,13 @@ function subsitecards($atts = []) {
   $atts = array_change_key_case((array)$atts, CASE_LOWER);
   $flags = shortcode_atts(
     array(
-        'exclude_sites'   => '',
-        'image_fallback'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg==',
-        'rss_icon_class' => 'fal fa-rss',
-        'grid_class' => 'col-6 col-md-3',
-        'orderby' => 'path',
-        'autostyle' => false,
-        'display_order' => false,
+        'exclude_sites'       => '',
+        'image_fallback'      => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg==',
+        'rss_icon_class'      => 'fal fa-rss',
+        'grid_class'          => 'col-6 col-md-3',
+        'orderby'             => 'path',
+        'autostyle'           => false,
+        'display_order'       => false,
     ), $atts
   );
   $rss_icon_class = esc_attr($flags['rss_icon_class']);
@@ -33,7 +33,7 @@ function subsitecards($atts = []) {
       'archived'      => 0,
       'site__not_in'  => $flags['exclude_sites'],
       'orderby'       => $orderby,
-      'ID' => false,
+      'ID'            => false,
   );
   if ($flags['display_order']) {
     $sites = [];
@@ -46,28 +46,7 @@ function subsitecards($atts = []) {
     $sites = get_sites($args);
   }
   $output = '';
-  $style = <<<EOS
-    <style>
-    .subsiteCard .card-body {
-      justify-content: space-between;
-    }
-    .subsiteCard .card-img-top {
-      width: 100%;
-      height: 15vw;
-      object-fit: cover;
-    }
-    .subsiteCard a:hover {
-      text-decoration:none;
-    }
-    .subsiteCard h3:hover {
-      text-decoration:underline!important;
-    }
-    .subsiteCard .fa-rss:hover {
-      color:var(--success);
-    }
-    </style>
-EOS;
-  $autostyle = ($flags['autostyle'] == 'true') ? $style : '';
+
   $card = <<<EOC
     <div class="subsiteCard $grid_class">
       <div class="card bg-white border-0 h-100">
@@ -87,6 +66,11 @@ EOS;
       </div>
     </div>
 EOC;
+
+  if ($flags['autostyle'] == 'true') {
+    wp_enqueue_style( 'subsite-cards-styles' );
+  }
+
   foreach ( array_filter($sites) as $site ) {
       switch_to_blog( $site->blog_id );
               $description = get_bloginfo('description');
@@ -96,8 +80,15 @@ EOC;
               $output .=  sprintf(  $card, $image, $burl, $site->blogname, $description, $rurl  );
       restore_current_blog();
   }
-  return $autostyle.'<div class="row h-100 my-4">'.$output.'</div>';
+  return '<div class="row h-100 my-4">'.$output.'</div>';
 }
+
+function load_plugin_css() {
+    //$plugin_url = plugin_dir_url( __FILE__ );
+    wp_register_style( 'subsite-cards-styles', plugin_dir_url( __FILE__ ) . 'subsite-cards.css' );
+}
+add_action( 'wp_enqueue_scripts', 'load_plugin_css' );
+
 
 function subsiteCards_init()
 {

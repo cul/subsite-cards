@@ -1,0 +1,17 @@
+.subsiteCard .card-body {
+  justify-content: space-between;
+}
+.subsiteCard .card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+.subsiteCard a:hover {
+  text-decoration:none;
+}
+.subsiteCard h3:hover {
+  text-decoration:underline!important;
+}
+.subsiteCard .fa-rss:hover {
+  color:var(--success);
+}
