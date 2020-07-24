@@ -12,7 +12,7 @@ WordPress plugin that adds a shortcode `[subsite-cards]` which displays a multis
 * `autostyle`
   * default: *false*
   * example: *`true`*
-  * note: set to *true* to apply opinionated styles to the cards. otherwise BS4 defaults will be used or create you own from the *.subsiteCard* class downward.
+  * note: set to *true* to apply opinionated styles to the cards. otherwise BS4 defaults will be used. or create your own from the *.subsiteCard* class downward.
 * `exclude_sites`
   * default:
   * example: *`exclude_sites="1,5"`*
@@ -26,6 +26,10 @@ WordPress plugin that adds a shortcode `[subsite-cards]` which displays a multis
   * default: *path* (alphabetical by /path/ name)
   * options: *path* or *last_updated*
   * example: *`last_updated`*
+* `display_order`
+  * default:
+  * example: *`display_order="4,5,3,2,7"`*
+  * note: specify the order that cards are displayed. overrides `orderby`.
 * `rss_icon_class`
   * default: *fal fa-rss*
   * example: *`rss_icon_class="fas fa-rss-square"`*

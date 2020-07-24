@@ -20,6 +20,7 @@ function subsitecards($atts = []) {
         'grid_class' => 'col-6 col-md-3',
         'orderby' => 'path',
         'autostyle' => false,
+        'display_order' => false,
     ), $atts
   );
   $rss_icon_class = esc_attr($flags['rss_icon_class']);
@@ -32,8 +33,18 @@ function subsitecards($atts = []) {
       'archived'      => 0,
       'site__not_in'  => $flags['exclude_sites'],
       'orderby'       => $orderby,
+      'ID' => false,
   );
-  $sites = get_sites($args);
+  if ($flags['display_order']) {
+    $sites = [];
+    $siteID = explode( ',', $flags['display_order'] );
+    foreach ($siteID as $site) {
+      $arg = array('ID' => $site);
+      $sites[] = get_sites($arg)[0];
+    }
+  } else {
+    $sites = get_sites($args);
+  }
   $output = '';
   $style = <<<EOS
     <style>
@@ -76,7 +87,7 @@ EOS;
       </div>
     </div>
 EOC;
-  foreach ( $sites as $site ) {
+  foreach ( array_filter($sites) as $site ) {
       switch_to_blog( $site->blog_id );
               $description = get_bloginfo('description');
               $burl = get_bloginfo('url');
