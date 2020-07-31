@@ -22,6 +22,10 @@ WordPress plugin that adds a shortcode `[subsite-cards]` which displays a multis
 * `image_fallback`
   * default: *'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWPImXXyPwAGFALPyD6HvAAAAABJRU5ErkJggg=='*
   * example: *`image_fallback="https://some.url/img.png"`*
+* `image_derivative`
+  * default: *'medium_large'*
+  * example: *`image_derivative="thumbnail"`*
+  * note: valid wordpress sizes are: thumbnail, medium, medium_large, large, full
 * `orderby`
   * default: *path* (alphabetical by /path/ name)
   * options: *path* or *last_updated*
@@ -40,4 +44,4 @@ WordPress plugin that adds a shortcode `[subsite-cards]` which displays a multis
 
 `[subsite-cards exclude_sites="1" autostyle="true"]`
 
-`[subsite-cards exclude_sites="1,4" image_fallback="https://some.url/img.png" rss_icon_class="fas fa-rss" grid_class="col-6 col-md-4" orderby="last_updated" autostyle="true"]`
+`[subsite-cards exclude_sites="1,4" image_fallback="https://some.url/img.png" rss_icon_class="fas fa-rss" grid_class="col-6 col-md-4" orderby="last_updated" autostyle="true" image_derivative="medium"]`

@@ -21,6 +21,7 @@ function subsitecards($atts = []) {
         'orderby'             => 'path',
         'autostyle'           => false,
         'display_order'       => false,
+        'image_derivative'    => 'medium_large',
     ), $atts
   );
   $rss_icon_class = esc_attr($flags['rss_icon_class']);
@@ -76,7 +77,7 @@ EOC;
               $description = get_bloginfo('description');
               $burl = get_bloginfo('url');
               $rurl = get_bloginfo('rss2_url');
-              $image = (has_custom_logo() ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ) , 'full' )[0] : $flags['image_fallback']);
+              $image = (has_custom_logo() ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ) , $flags['image_derivative'] )[0] : $flags['image_fallback']);
               $output .=  sprintf(  $card, $image, $burl, $site->blogname, $description, $rurl  );
       restore_current_blog();
   }
