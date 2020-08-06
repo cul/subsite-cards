@@ -3,7 +3,7 @@
 Plugin Name: Subsite Cards
 Plugin URI: https://github.com/cul/subsite-cards
 Description: Wordpress shortcode [subsite-cards] displays a multisite's public subsites as bs4 cards (with theme's custom_logo, blogname, rss2 feed link, and description). see the README (https://github.com/cul/subsite-cards/blob/master/README.md) for optional args.
-Version: 1.1.0
+Version: 1.1.1
 Author: er2576
 Author URI: https://github.com/er-k/
 License: MIT
@@ -52,7 +52,7 @@ function subsitecards($atts = []) {
     <div class="subsiteCard $grid_class">
       <div class="card bg-white border-0 h-100">
         <a href="%2\$s">
-          <img src="%1\$s" class="card-img-top" alt="...">
+          <img src="%1\$s" class="card-img-top" alt="%3\$s">
         </a>
         <article class="card-body d-flex p-1">
           <a href="%2\$s" class="d-flex">
@@ -85,7 +85,6 @@ EOC;
 }
 
 function load_plugin_css() {
-    //$plugin_url = plugin_dir_url( __FILE__ );
     wp_register_style( 'subsite-cards-styles', plugin_dir_url( __FILE__ ) . 'subsite-cards.css' );
 }
 add_action( 'wp_enqueue_scripts', 'load_plugin_css' );
