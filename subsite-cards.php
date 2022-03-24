@@ -51,8 +51,8 @@ function subsitecards($atts = []) {
   $card = <<<EOC
     <div class="subsiteCard $grid_class">
       <div class="card bg-white border-0 h-100">
-        <a href="%2\$s">
-          <img src="%1\$s" class="card-img-top" alt="%3\$s">
+        <a href="%2\$s" title="%3\$s">
+          <img src="%1\$s" class="card-img-top" alt="%6\$s">
         </a>
         <article class="card-body d-flex p-1">
           <a href="%2\$s" class="d-flex">
@@ -77,8 +77,12 @@ EOC;
               $description = get_bloginfo('description');
               $burl = get_bloginfo('url');
               $rurl = get_bloginfo('rss2_url');
-              $image = (has_custom_logo() ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ) , $flags['image_derivative'] )[0] : $flags['image_fallback']);
-              $output .=  sprintf(  $card, $image, $burl, $site->blogname, $description, $rurl  );
+              $custom_logo_id = get_theme_mod( 'custom_logo' );
+              $image = (has_custom_logo() ? wp_get_attachment_image_src( $custom_logo_id, $flags['image_derivative'] )[0] : $flags['image_fallback']);
+              $custom_logo_attr = array( 'class'   => 'custom-logo', 'loading' => false,);
+              $image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+              $image_alt_txt = (empty($image_alt)) ? "$site->blogname" : $image_alt;
+              $output .=  sprintf(  $card, $image, $burl, $site->blogname, $description, $rurl, $image_alt_txt  );
       restore_current_blog();
   }
   return '<div class="row h-100 my-4">'.$output.'</div>';
