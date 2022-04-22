@@ -62,7 +62,7 @@ function subsitecards($atts = []) {
               </h3>
               <p class="card-text d-none d-md-block text-muted text-decoration-none">%4\$s</p>
             </div>
-          </a><a href="%5\$s"><i class="$rss_icon_class"></i></a>
+          </a><a href="%5\$s" aria-label="RSS Feed"><i class="$rss_icon_class"></i></a>
         </article>
       </div>
     </div>
