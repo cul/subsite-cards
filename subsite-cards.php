@@ -80,16 +80,18 @@ function subsitecards( $atts = array() ) {
     <div class="subsiteCard $grid_class">
       <div class="card bg-white border-0 h-100">
         <img src="%1\$s" class="card-img-top" alt="%6\$s">
-        <article class="card-body d-flex p-1">
+        <div class="card-header bg-transparent border-0 d-flex p-1">
           <a href="%2\$s" class="d-flex stretched-link">
             <div class="d-flex align-content-start flex-wrap">
-              <h3 class="card-title pr-1 h5 w-100 text-primary">
+              <h4 class="card-title mb-0 pr-1 h5 w-100 text-primary">
                 %3\$s
-              </h3>
-              <p class="card-text d-none d-md-block text-muted text-decoration-none">%4\$s</p>
+              </h4>
             </div>
           </a><a href="%5\$s" style="z-index:1;" aria-label="RSS Feed"><i class="$rss_icon_class"></i></a>
-        </article>
+        </div>
+		<div class="card-body d-flex px-1 py-0">
+			<p class="card-text d-none d-md-block text-muted">%4\$s</p>
+		</div>
       </div>
     </div>
 EOC;
