@@ -1,17 +1,23 @@
-.subsiteCard .card-body {
-  justify-content: space-between;
+.subsiteCard .card-header {
+	justify-content: space-between;
 }
 .subsiteCard .card-img-top {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
+	width: 100%;
+	height: 15vw;
+	object-fit: cover;
+}
+.subsiteCard .card:hover .card-title, .subsiteCard .card:hover .card-text {
+	color: var(--dark) !important;
+}
+.subsiteCard .card:hover {
+	filter: drop-shadow(0 0 1px var(--info));
 }
 .subsiteCard a:hover {
-  text-decoration:none;
+	text-decoration:none;
 }
 .subsiteCard h3:hover {
-  text-decoration:underline!important;
+	text-decoration:underline!important;
 }
 .subsiteCard .fa-rss:hover {
-  color:var(--success);
+	color:var(--success);
 }
